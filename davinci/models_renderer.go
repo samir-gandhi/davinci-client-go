@@ -1,11 +1,14 @@
 package davinci
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"maps"
+)
 
 type _Renderer Renderer
 type Renderer struct {
-	AdditionalProperties map[string]interface{} `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
-	Name                 *string                `json:"name,omitempty" davinci:"name,designercue,omitempty"`
+	AdditionalProperties map[string]any `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
+	Name                 *string        `json:"name,omitempty" davinci:"name,designercue,omitempty"`
 }
 
 func (o Renderer) MarshalJSON() ([]byte, error) {
@@ -16,17 +19,15 @@ func (o Renderer) MarshalJSON() ([]byte, error) {
 	return json.Marshal(result)
 }
 
-func (o Renderer) ToMap() (map[string]interface{}, error) {
+func (o Renderer) ToMap() (map[string]any, error) {
 
-	result := map[string]interface{}{}
+	result := map[string]any{}
 
 	if o.Name != nil {
 		result["name"] = o.Name
 	}
 
-	for k, v := range o.AdditionalProperties {
-		result[k] = v
-	}
+	maps.Copy(result, o.AdditionalProperties)
 
 	return result, nil
 }
@@ -38,7 +39,7 @@ func (o *Renderer) UnmarshalJSON(bytes []byte) (err error) {
 		*o = Renderer(varRenderer)
 	}
 
-	additionalProperties := make(map[string]interface{})
+	additionalProperties := make(map[string]any)
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")

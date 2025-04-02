@@ -1,20 +1,23 @@
 package davinci
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"maps"
+)
 
 type _Edge Edge
 type Edge struct {
-	AdditionalProperties map[string]interface{} `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
-	Data                 *Data                  `json:"data,omitempty" davinci:"data,*,omitempty"`
-	Position             *Position              `json:"position,omitempty" davinci:"position,*,omitempty"`
-	Group                *string                `json:"group,omitempty" davinci:"group,designercue,omitempty"`
-	Removed              *bool                  `json:"removed,omitempty" davinci:"removed,designercue,omitempty"`
-	Selected             *bool                  `json:"selected,omitempty" davinci:"selected,designercue,omitempty"`
-	Selectable           *bool                  `json:"selectable,omitempty" davinci:"selectable,designercue,omitempty"`
-	Locked               *bool                  `json:"locked,omitempty" davinci:"locked,designercue,omitempty"`
-	Grabbable            *bool                  `json:"grabbable,omitempty" davinci:"grabbable,designercue,omitempty"`
-	Pannable             *bool                  `json:"pannable,omitempty" davinci:"pannable,designercue,omitempty"`
-	Classes              *string                `json:"classes,omitempty" davinci:"classes,config,omitempty"`
+	AdditionalProperties map[string]any `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
+	Data                 *Data          `json:"data,omitempty" davinci:"data,*,omitempty"`
+	Position             *Position      `json:"position,omitempty" davinci:"position,*,omitempty"`
+	Group                *string        `json:"group,omitempty" davinci:"group,designercue,omitempty"`
+	Removed              *bool          `json:"removed,omitempty" davinci:"removed,designercue,omitempty"`
+	Selected             *bool          `json:"selected,omitempty" davinci:"selected,designercue,omitempty"`
+	Selectable           *bool          `json:"selectable,omitempty" davinci:"selectable,designercue,omitempty"`
+	Locked               *bool          `json:"locked,omitempty" davinci:"locked,designercue,omitempty"`
+	Grabbable            *bool          `json:"grabbable,omitempty" davinci:"grabbable,designercue,omitempty"`
+	Pannable             *bool          `json:"pannable,omitempty" davinci:"pannable,designercue,omitempty"`
+	Classes              *string        `json:"classes,omitempty" davinci:"classes,config,omitempty"`
 }
 
 func (o Edge) MarshalJSON() ([]byte, error) {
@@ -25,9 +28,9 @@ func (o Edge) MarshalJSON() ([]byte, error) {
 	return json.Marshal(result)
 }
 
-func (o Edge) ToMap() (map[string]interface{}, error) {
+func (o Edge) ToMap() (map[string]any, error) {
 
-	result := map[string]interface{}{}
+	result := map[string]any{}
 
 	if o.Data != nil {
 		result["data"] = o.Data
@@ -69,9 +72,7 @@ func (o Edge) ToMap() (map[string]interface{}, error) {
 		result["classes"] = o.Classes
 	}
 
-	for k, v := range o.AdditionalProperties {
-		result[k] = v
-	}
+	maps.Copy(result, o.AdditionalProperties)
 
 	return result, nil
 }
@@ -83,7 +84,7 @@ func (o *Edge) UnmarshalJSON(bytes []byte) (err error) {
 		*o = Edge(varEdge)
 	}
 
-	additionalProperties := make(map[string]interface{})
+	additionalProperties := make(map[string]any)
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "data")

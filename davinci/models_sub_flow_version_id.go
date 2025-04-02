@@ -1,10 +1,13 @@
 package davinci
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"maps"
+)
 
 type _SubFlowVersionID SubFlowVersionID
 type SubFlowVersionID struct {
-	AdditionalProperties map[string]interface{} `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
+	AdditionalProperties map[string]any         `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
 	Value                *SubFlowVersionIDValue `json:"value,omitempty" davinci:"value,*,omitempty"`
 }
 
@@ -16,17 +19,15 @@ func (o SubFlowVersionID) MarshalJSON() ([]byte, error) {
 	return json.Marshal(result)
 }
 
-func (o SubFlowVersionID) ToMap() (map[string]interface{}, error) {
+func (o SubFlowVersionID) ToMap() (map[string]any, error) {
 
-	result := map[string]interface{}{}
+	result := map[string]any{}
 
 	if o.Value != nil {
 		result["value"] = o.Value
 	}
 
-	for k, v := range o.AdditionalProperties {
-		result[k] = v
-	}
+	maps.Copy(result, o.AdditionalProperties)
 
 	return result, nil
 }
@@ -38,7 +39,7 @@ func (o *SubFlowVersionID) UnmarshalJSON(bytes []byte) (err error) {
 		*o = SubFlowVersionID(varSubFlowVersionID)
 	}
 
-	additionalProperties := make(map[string]interface{})
+	additionalProperties := make(map[string]any)
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "value")

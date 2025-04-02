@@ -1,12 +1,15 @@
 package davinci
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"maps"
+)
 
 type _SubFlowProperties SubFlowProperties
 type SubFlowProperties struct {
-	AdditionalProperties map[string]interface{} `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
-	SubFlowID            *SubFlowID             `json:"subFlowId,omitempty" davinci:"subFlowId,*,omitempty"`
-	SubFlowProperties    *SubFlowProperties     `json:"subFlowVersionId,omitempty" davinci:"subFlowVersionId,*,omitempty"`
+	AdditionalProperties map[string]any     `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
+	SubFlowID            *SubFlowID         `json:"subFlowId,omitempty" davinci:"subFlowId,*,omitempty"`
+	SubFlowProperties    *SubFlowProperties `json:"subFlowVersionId,omitempty" davinci:"subFlowVersionId,*,omitempty"`
 }
 
 func (o SubFlowProperties) MarshalJSON() ([]byte, error) {
@@ -17,9 +20,9 @@ func (o SubFlowProperties) MarshalJSON() ([]byte, error) {
 	return json.Marshal(result)
 }
 
-func (o SubFlowProperties) ToMap() (map[string]interface{}, error) {
+func (o SubFlowProperties) ToMap() (map[string]any, error) {
 
-	result := map[string]interface{}{}
+	result := map[string]any{}
 
 	if o.SubFlowID != nil {
 		result["subFlowId"] = o.SubFlowID
@@ -29,9 +32,7 @@ func (o SubFlowProperties) ToMap() (map[string]interface{}, error) {
 		result["subFlowVersionId"] = o.SubFlowProperties
 	}
 
-	for k, v := range o.AdditionalProperties {
-		result[k] = v
-	}
+	maps.Copy(result, o.AdditionalProperties)
 
 	return result, nil
 }
@@ -43,7 +44,7 @@ func (o *SubFlowProperties) UnmarshalJSON(bytes []byte) (err error) {
 		*o = SubFlowProperties(varSubFlowProperties)
 	}
 
-	additionalProperties := make(map[string]interface{})
+	additionalProperties := make(map[string]any)
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "subFlowId")

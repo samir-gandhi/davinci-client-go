@@ -5,30 +5,30 @@ import "github.com/samir-gandhi/davinci-client-go/davinci"
 func Data_FullBasic() davinci.Flow {
 
 	return davinci.Flow{
-		AdditionalProperties: map[string]interface{}{
+		AdditionalProperties: map[string]any{
 			"custom-attribute-1": "custom-attribute-1-value",
 			"custom-attribute-2": "custom-attribute-2-value",
 		},
 		FlowConfiguration: davinci.FlowConfiguration{
 			FlowUpdateConfiguration: davinci.FlowUpdateConfiguration{
 				GraphData: &davinci.GraphData{
-					AdditionalProperties: map[string]interface{}{
+					AdditionalProperties: map[string]any{
 						"custom-attribute-1": "custom-attribute-1-value",
 						"custom-attribute-2": "custom-attribute-2-value",
 					},
 					Elements: &davinci.Elements{
-						AdditionalProperties: map[string]interface{}{
+						AdditionalProperties: map[string]any{
 							"custom-attribute-1": "custom-attribute-1-value",
 							"custom-attribute-2": "custom-attribute-2-value",
 						},
 						Nodes: []davinci.Node{
 							{
-								AdditionalProperties: map[string]interface{}{
+								AdditionalProperties: map[string]any{
 									"custom-attribute-1": "custom-attribute-1-value",
 									"custom-attribute-2": "custom-attribute-2-value",
 								},
 								Data: &davinci.NodeData{
-									AdditionalProperties: map[string]interface{}{
+									AdditionalProperties: map[string]any{
 										"custom-attribute-1": "custom-attribute-1-value",
 										"custom-attribute-2": "custom-attribute-2-value",
 									},
@@ -70,10 +70,10 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 									Properties: func() *davinci.Properties {
 										return &davinci.Properties{
-											AdditionalProperties: map[string]interface{}{
+											AdditionalProperties: map[string]any{
 												"custom-attribute-1": "custom-attribute-1-value",
 												"custom-attribute-2": "custom-attribute-2-value",
-												"message": map[string]interface{}{
+												"message": map[string]any{
 													"custom-attribute-1": "custom-attribute-1-value",
 													"custom-attribute-2": "custom-attribute-2-value",
 													"value":              "[\n  {\n    \"children\": [\n      {\n        \"text\": \"Hello, world?\"\n      }\n    ]\n  }\n]",
@@ -83,7 +83,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									AdditionalProperties: map[string]interface{}{
+									AdditionalProperties: map[string]any{
 										"custom-attribute-1": "custom-attribute-1-value",
 										"custom-attribute-2": "custom-attribute-2-value",
 									},
@@ -106,9 +106,9 @@ func Data_FullBasic() davinci.Flow {
 								Classes:    "",
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.NodeData{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "8fvg7tfr8j"
 										return &v
@@ -123,7 +123,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(426.5)
 										return &v
@@ -143,9 +143,9 @@ func Data_FullBasic() davinci.Flow {
 								Classes:    "",
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.NodeData{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "nx0o1b2cmw"
 										return &v
@@ -184,11 +184,11 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 									Properties: func() *davinci.Properties {
 										return &davinci.Properties{
-											AdditionalProperties: map[string]interface{}{
-												"leftValueA": map[string]interface{}{
+											AdditionalProperties: map[string]any{
+												"leftValueA": map[string]any{
 													"value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"1\"\n      }\n    ]\n  }\n]",
 												},
-												"rightValueB": map[string]interface{}{
+												"rightValueB": map[string]any{
 													"value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"1\"\n      }\n    ]\n  }\n]",
 												},
 											},
@@ -196,7 +196,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(576)
 										return &v
@@ -216,9 +216,9 @@ func Data_FullBasic() davinci.Flow {
 								Classes:    "",
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.NodeData{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "cdcw8k7dnx"
 										return &v
@@ -233,11 +233,11 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 									Properties: func() *davinci.Properties {
 										return &davinci.Properties{
-											AdditionalProperties: map[string]interface{}{
-												"vsp1ewtr9m": map[string]interface{}{
+											AdditionalProperties: map[string]any{
+												"vsp1ewtr9m": map[string]any{
 													"value": "allTriggersFalse",
 												},
-												"xb74p6rkd8": map[string]interface{}{
+												"xb74p6rkd8": map[string]any{
 													"value": "anyTriggersFalse",
 												},
 											},
@@ -245,7 +245,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(717)
 										return &v
@@ -265,9 +265,9 @@ func Data_FullBasic() davinci.Flow {
 								Classes:    "",
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.NodeData{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "ikt13crnhy"
 										return &v
@@ -306,12 +306,12 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 									Properties: func() *davinci.Properties {
 										return &davinci.Properties{
-											// AdditionalProperties: map[string]interface{}{},
+											// AdditionalProperties: map[string]any{},
 										}
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(1197)
 										return &v
@@ -331,9 +331,9 @@ func Data_FullBasic() davinci.Flow {
 								Classes:    "",
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.NodeData{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "vsp1ewtr9m"
 										return &v
@@ -372,8 +372,8 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 									Properties: func() *davinci.Properties {
 										return &davinci.Properties{
-											AdditionalProperties: map[string]interface{}{
-												"errorMessage": map[string]interface{}{
+											AdditionalProperties: map[string]any{
+												"errorMessage": map[string]any{
 													"value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"Error\"\n      }\n    ]\n  }\n]",
 												},
 											},
@@ -381,7 +381,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(1197)
 										return &v
@@ -401,9 +401,9 @@ func Data_FullBasic() davinci.Flow {
 								Classes:    "",
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.NodeData{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "xb74p6rkd8"
 										return &v
@@ -442,7 +442,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 									Properties: func() *davinci.Properties {
 										return &davinci.Properties{
-											// AdditionalProperties: map[string]interface{}{},
+											// AdditionalProperties: map[string]any{},
 											SubFlowID: func() *davinci.SubFlowID {
 												return &davinci.SubFlowID{
 													Value: &davinci.SubFlowValue{
@@ -471,7 +471,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(867)
 										return &v
@@ -491,9 +491,9 @@ func Data_FullBasic() davinci.Flow {
 								Classes:    "",
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.NodeData{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "kq5ybvwvro"
 										return &v
@@ -532,7 +532,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 									Properties: func() *davinci.Properties {
 										return &davinci.Properties{
-											// AdditionalProperties: map[string]interface{}{},
+											// AdditionalProperties: map[string]any{},
 											SubFlowID: func() *davinci.SubFlowID {
 												return &davinci.SubFlowID{
 													Value: &davinci.SubFlowValue{
@@ -561,7 +561,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(867)
 										return &v
@@ -581,9 +581,9 @@ func Data_FullBasic() davinci.Flow {
 								Classes:    "",
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.NodeData{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "j74pmg6577"
 										return &v
@@ -594,7 +594,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(1017)
 										return &v
@@ -614,9 +614,9 @@ func Data_FullBasic() davinci.Flow {
 								Classes:    "",
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.NodeData{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "pensvkew7y"
 										return &v
@@ -628,7 +628,7 @@ func Data_FullBasic() davinci.Flow {
 									Properties: nil,
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(1032)
 										return &v
@@ -648,9 +648,9 @@ func Data_FullBasic() davinci.Flow {
 								Classes:    "",
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.NodeData{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "3zvjdgdljx"
 										return &v
@@ -689,13 +689,13 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 									Properties: func() *davinci.Properties {
 										return &davinci.Properties{
-											// AdditionalProperties: map[string]interface{}{},
+											// AdditionalProperties: map[string]any{},
 											SaveFlowVariables: func() *davinci.SaveFlowVariables {
 												return &davinci.SaveFlowVariables{
 													Value: func() []davinci.SaveFlowVariable {
 														return []davinci.SaveFlowVariable{
 															{
-																// AdditionalProperties: map[string]interface{}{},
+																// AdditionalProperties: map[string]any{},
 																Name: "fdgdfgfdg",
 																Value: func() *string {
 																	v := "[\n  {\n    \"children\": [\n      {\n        \"text\": \"test124\"\n      }\n    ]\n  }\n]"
@@ -712,7 +712,7 @@ func Data_FullBasic() davinci.Flow {
 																Type: "string",
 															},
 															{
-																// AdditionalProperties: map[string]interface{}{},
+																// AdditionalProperties: map[string]any{},
 																Name: "test123",
 																Value: func() *string {
 																	v := "[\n  {\n    \"children\": [\n      {\n        \"text\": \"test456\"\n      }\n    ]\n  }\n]"
@@ -736,7 +736,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(270)
 										return &v
@@ -756,9 +756,9 @@ func Data_FullBasic() davinci.Flow {
 								Classes:    "",
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.NodeData{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "bbemfztdyk"
 										return &v
@@ -769,7 +769,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(273.5)
 										return &v
@@ -791,12 +791,12 @@ func Data_FullBasic() davinci.Flow {
 						},
 						Edges: []davinci.Edge{
 							{
-								AdditionalProperties: map[string]interface{}{
+								AdditionalProperties: map[string]any{
 									"custom-attribute-1": "custom-attribute-1-value",
 									"custom-attribute-2": "custom-attribute-2-value",
 								},
 								Data: &davinci.Data{
-									AdditionalProperties: map[string]interface{}{
+									AdditionalProperties: map[string]any{
 										"custom-attribute-1": "custom-attribute-1-value",
 										"custom-attribute-2": "custom-attribute-2-value",
 									},
@@ -814,7 +814,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									AdditionalProperties: map[string]interface{}{
+									AdditionalProperties: map[string]any{
 										"custom-attribute-1": "custom-attribute-1-value",
 										"custom-attribute-2": "custom-attribute-2-value",
 									},
@@ -861,9 +861,9 @@ func Data_FullBasic() davinci.Flow {
 								}(),
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.Data{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "ljavni2nky"
 										return &v
@@ -878,7 +878,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(0)
 										return &v
@@ -922,9 +922,9 @@ func Data_FullBasic() davinci.Flow {
 								}(),
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.Data{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "0o2fqy3mf3"
 										return &v
@@ -939,7 +939,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(0)
 										return &v
@@ -983,9 +983,9 @@ func Data_FullBasic() davinci.Flow {
 								}(),
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.Data{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "493yd0jbi6"
 										return &v
@@ -1000,7 +1000,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(0)
 										return &v
@@ -1044,9 +1044,9 @@ func Data_FullBasic() davinci.Flow {
 								}(),
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.Data{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "pn2kixnzms"
 										return &v
@@ -1061,7 +1061,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(0)
 										return &v
@@ -1105,9 +1105,9 @@ func Data_FullBasic() davinci.Flow {
 								}(),
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.Data{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "0sb4quzlgx"
 										return &v
@@ -1122,7 +1122,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(0)
 										return &v
@@ -1166,9 +1166,9 @@ func Data_FullBasic() davinci.Flow {
 								}(),
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.Data{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "v5p4i55lt9"
 										return &v
@@ -1183,7 +1183,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(0)
 										return &v
@@ -1227,9 +1227,9 @@ func Data_FullBasic() davinci.Flow {
 								}(),
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.Data{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "k0trrhjqt6"
 										return &v
@@ -1244,7 +1244,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(0)
 										return &v
@@ -1288,9 +1288,9 @@ func Data_FullBasic() davinci.Flow {
 								}(),
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.Data{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "2g0chago4l"
 										return &v
@@ -1305,7 +1305,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(0)
 										return &v
@@ -1349,9 +1349,9 @@ func Data_FullBasic() davinci.Flow {
 								}(),
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.Data{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "gs1fx4x303"
 										return &v
@@ -1366,7 +1366,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(0)
 										return &v
@@ -1410,9 +1410,9 @@ func Data_FullBasic() davinci.Flow {
 								}(),
 							},
 							{
-								// AdditionalProperties: map[string]interface{}{},
+								// AdditionalProperties: map[string]any{},
 								Data: &davinci.Data{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									ID: func() *string {
 										v := "cum544luro"
 										return &v
@@ -1427,7 +1427,7 @@ func Data_FullBasic() davinci.Flow {
 									}(),
 								},
 								Position: &davinci.Position{
-									// AdditionalProperties: map[string]interface{}{},
+									// AdditionalProperties: map[string]any{},
 									X: func() *float64 {
 										v := float64(0)
 										return &v
@@ -1473,7 +1473,7 @@ func Data_FullBasic() davinci.Flow {
 						},
 					},
 					Data: &davinci.Data{
-						AdditionalProperties: map[string]interface{}{
+						AdditionalProperties: map[string]any{
 							"custom-attribute-1": "custom-attribute-1-value",
 							"custom-attribute-2": "custom-attribute-2-value",
 						},
@@ -1507,7 +1507,7 @@ func Data_FullBasic() davinci.Flow {
 						return &v
 					}(),
 					Pan: &davinci.Pan{
-						AdditionalProperties: map[string]interface{}{
+						AdditionalProperties: map[string]any{
 							"custom-attribute-1": "custom-attribute-1-value",
 							"custom-attribute-2": "custom-attribute-2-value",
 						},
@@ -1525,7 +1525,7 @@ func Data_FullBasic() davinci.Flow {
 						return &v
 					}(),
 					Renderer: &davinci.Renderer{
-						AdditionalProperties: map[string]interface{}{
+						AdditionalProperties: map[string]any{
 							"custom-attribute-1": "custom-attribute-1-value",
 							"custom-attribute-2": "custom-attribute-2-value",
 						},
@@ -1576,7 +1576,7 @@ func Data_FullBasic() davinci.Flow {
 			OutputSchemaCompiled: nil,
 			Variables: []davinci.FlowVariable{
 				{
-					AdditionalProperties: map[string]interface{}{
+					AdditionalProperties: map[string]any{
 						"custom-attribute-1": "custom-attribute-1-value",
 						"custom-attribute-2": "custom-attribute-2-value",
 					},
@@ -1590,7 +1590,7 @@ func Data_FullBasic() davinci.Flow {
 						return &v
 					}(),
 					Fields: &davinci.FlowVariableFields{
-						AdditionalProperties: map[string]interface{}{
+						AdditionalProperties: map[string]any{
 							"custom-attribute-1": "custom-attribute-1-value",
 							"custom-attribute-2": "custom-attribute-2-value",
 						},
@@ -1633,7 +1633,7 @@ func Data_FullBasic() davinci.Flow {
 					}(),
 				},
 				{
-					// AdditionalProperties: map[string]interface{}{},
+					// AdditionalProperties: map[string]any{},
 					Context: func() *string {
 						v := "flow"
 						return &v
@@ -1644,7 +1644,7 @@ func Data_FullBasic() davinci.Flow {
 						return &v
 					}(),
 					Fields: &davinci.FlowVariableFields{
-						// AdditionalProperties: map[string]interface{}{},
+						// AdditionalProperties: map[string]any{},
 						Type: func() *string {
 							v := "number"
 							return &v

@@ -1,16 +1,19 @@
 package davinci
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"maps"
+)
 
 type _FlowVariableFields FlowVariableFields
 type FlowVariableFields struct {
-	AdditionalProperties map[string]interface{} `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
-	Type                 *string                `json:"type,omitempty" davinci:"type,config,omitempty"`
-	DisplayName          *string                `json:"displayName,omitempty" davinci:"displayName,flowvariables,omitempty"`
-	Mutable              *bool                  `json:"mutable,omitempty" davinci:"mutable,flowvariables,omitempty"`
-	Value                interface{}            `json:"value,omitempty" davinci:"value,flowvariables,omitempty"`
-	Min                  *int32                 `json:"min,omitempty" davinci:"min,flowvariables,omitempty"`
-	Max                  *int32                 `json:"max,omitempty" davinci:"max,flowvariables,omitempty"`
+	AdditionalProperties map[string]any `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
+	Type                 *string        `json:"type,omitempty" davinci:"type,config,omitempty"`
+	DisplayName          *string        `json:"displayName,omitempty" davinci:"displayName,flowvariables,omitempty"`
+	Mutable              *bool          `json:"mutable,omitempty" davinci:"mutable,flowvariables,omitempty"`
+	Value                interface{}    `json:"value,omitempty" davinci:"value,flowvariables,omitempty"`
+	Min                  *int32         `json:"min,omitempty" davinci:"min,flowvariables,omitempty"`
+	Max                  *int32         `json:"max,omitempty" davinci:"max,flowvariables,omitempty"`
 }
 
 func (o FlowVariableFields) MarshalJSON() ([]byte, error) {
@@ -21,9 +24,9 @@ func (o FlowVariableFields) MarshalJSON() ([]byte, error) {
 	return json.Marshal(result)
 }
 
-func (o FlowVariableFields) ToMap() (map[string]interface{}, error) {
+func (o FlowVariableFields) ToMap() (map[string]any, error) {
 
-	result := map[string]interface{}{}
+	result := map[string]any{}
 
 	if o.Type != nil {
 		result["type"] = o.Type
@@ -49,9 +52,7 @@ func (o FlowVariableFields) ToMap() (map[string]interface{}, error) {
 		result["max"] = o.Max
 	}
 
-	for k, v := range o.AdditionalProperties {
-		result[k] = v
-	}
+	maps.Copy(result, o.AdditionalProperties)
 
 	return result, nil
 }
@@ -63,7 +64,7 @@ func (o *FlowVariableFields) UnmarshalJSON(bytes []byte) (err error) {
 		*o = FlowVariableFields(varFlowVariableFields)
 	}
 
-	additionalProperties := make(map[string]interface{})
+	additionalProperties := make(map[string]any)
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")

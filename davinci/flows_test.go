@@ -22,7 +22,7 @@ import (
  */
 
 // testData for Roles functions
-var testDataFlows = map[string]interface{}{
+var testDataFlows = map[string]any{
 	"params": map[string]davinci.Params{
 		"limitTen": {Limit: "10"},
 		"limitTwo": {Limit: "2"},
@@ -31,7 +31,7 @@ var testDataFlows = map[string]interface{}{
 		"pageNeg": {Page: "2"},
 	},
 	// "flowsCreate": Flow{
-	// 	AdditionalProperties: map[string]interface{}{
+	// 	AdditionalProperties: map[string]any{
 	// 		"custom-unimplemented-1": "custom-unimplemented-1",
 	// 		"custom-unimplemented-2": "custom-unimplemented-2",
 	// 	},
@@ -62,7 +62,7 @@ var testDataFlows = map[string]interface{}{
 	// 		GraphData:            GraphData{},
 	// 	},
 	// },
-	"flowsCreateJson": map[string]interface{}{
+	"flowsCreateJson": map[string]any{
 		"properImport": func() string {
 			v, err := test.ReadJsonFile("flows/flows-create-1.json")
 			if err != nil {
@@ -103,7 +103,7 @@ func TestFlows_Read(t *testing.T) {
 	}
 	companyID := os.Getenv("PINGONE_TARGET_ENVIRONMENT_ID")
 
-	if args, ok := testDataFlows["flowsCreateJson"].(map[string]interface{}); ok {
+	if args, ok := testDataFlows["flowsCreateJson"].(map[string]any); ok {
 		for i, thisArg := range args {
 			testName := i
 			t.Run(testName, func(t *testing.T) {
@@ -160,7 +160,7 @@ func TestFlow_Create(t *testing.T) {
 		panic(err)
 	}
 	companyID := os.Getenv("PINGONE_TARGET_ENVIRONMENT_ID")
-	if args, ok := testDataFlows["flowsCreateJson"].(map[string]interface{}); ok {
+	if args, ok := testDataFlows["flowsCreateJson"].(map[string]any); ok {
 		for i, thisArg := range args {
 			testName := i
 			t.Run(testName, func(t *testing.T) {
@@ -193,7 +193,7 @@ func TestFlow_CreateWithJson(t *testing.T) {
 		panic(err)
 	}
 	companyID := os.Getenv("PINGONE_TARGET_ENVIRONMENT_ID")
-	if args, ok := testDataFlows["flowsCreateJson"].(map[string]interface{}); ok {
+	if args, ok := testDataFlows["flowsCreateJson"].(map[string]any); ok {
 		for i, thisArg := range args {
 			testName := i
 			t.Run(testName, func(t *testing.T) {
@@ -260,7 +260,7 @@ func TestFlow_Update(t *testing.T) {
 		panic(err)
 	}
 	companyID := os.Getenv("PINGONE_TARGET_ENVIRONMENT_ID")
-	if args, ok := testDataFlows["flowsCreateJson"].(map[string]interface{}); ok {
+	if args, ok := testDataFlows["flowsCreateJson"].(map[string]any); ok {
 		for i, thisArg := range args {
 			testName := i
 			t.Run(testName, func(t *testing.T) {
@@ -313,7 +313,7 @@ func TestFlow_Delete(t *testing.T) {
 		panic(err)
 	}
 	companyID := os.Getenv("PINGONE_TARGET_ENVIRONMENT_ID")
-	if args, ok := testDataFlows["flowsCreateJson"].(map[string]interface{}); ok {
+	if args, ok := testDataFlows["flowsCreateJson"].(map[string]any); ok {
 		for i, thisArg := range args {
 			testName := i
 			t.Run(testName, func(t *testing.T) {
@@ -356,7 +356,7 @@ func TestFlow_Deploy(t *testing.T) {
 		panic(err)
 	}
 	companyID := os.Getenv("PINGONE_TARGET_ENVIRONMENT_ID")
-	if args, ok := testDataFlows["flowsCreateJson"].(map[string]interface{}); ok {
+	if args, ok := testDataFlows["flowsCreateJson"].(map[string]any); ok {
 		for i, thisArg := range args {
 			testName := i
 			t.Run(testName, func(t *testing.T) {

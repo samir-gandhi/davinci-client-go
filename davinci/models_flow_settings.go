@@ -1,23 +1,26 @@
 package davinci
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"maps"
+)
 
 type _FlowSettings FlowSettings
 type FlowSettings struct {
-	AdditionalProperties          map[string]interface{} `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
-	Csp                           *string                `json:"csp,omitempty" davinci:"csp,config,omitempty"`
-	Css                           *string                `json:"css,omitempty" davinci:"css,config,omitempty"`
-	CssLinks                      *[]string              `json:"cssLinks,omitempty" davinci:"cssLinks,config,omitempty"`
-	DebugMode                     *bool                  `json:"debugMode,omitempty" davinci:"debugMode,environmentmetadata,omitempty"`
-	FlowHttpTimeoutInSeconds      *int32                 `json:"flowHttpTimeoutInSeconds,omitempty" davinci:"flowHttpTimeoutInSeconds,config,omitempty"`
-	IntermediateLoadingScreenCSS  *string                `json:"intermediateLoadingScreenCSS,omitempty" davinci:"intermediateLoadingScreenCSS,config,omitempty"`
-	IntermediateLoadingScreenHTML *string                `json:"intermediateLoadingScreenHTML,omitempty" davinci:"intermediateLoadingScreenHTML,config,omitempty"`
-	LogLevel                      *int32                 `json:"logLevel,omitempty" davinci:"logLevel,environmentmetadata,omitempty"`
-	PingOneFlow                   *bool                  `json:"pingOneFlow,omitempty" davinci:"pingOneFlow,config,omitempty"`
-	ScrubSensitiveInfo            *bool                  `json:"scrubSensitiveInfo,omitempty" davinci:"scrubSensitiveInfo,config,omitempty"`
-	SensitiveInfoFields           *interface{}           `json:"sensitiveInfoFields,omitempty" davinci:"sensitiveInfoFields,config,omitempty"`
-	UseBetaAlgorithm              *bool                  `json:"useBetaAlgorithm,omitempty" davinci:"useBetaAlgorithm,config,omitempty"`
-	UseCustomCSS                  *bool                  `json:"useCustomCSS,omitempty" davinci:"useCustomCSS,config,omitempty"`
+	AdditionalProperties          map[string]any `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
+	Csp                           *string        `json:"csp,omitempty" davinci:"csp,config,omitempty"`
+	Css                           *string        `json:"css,omitempty" davinci:"css,config,omitempty"`
+	CssLinks                      *[]string      `json:"cssLinks,omitempty" davinci:"cssLinks,config,omitempty"`
+	DebugMode                     *bool          `json:"debugMode,omitempty" davinci:"debugMode,environmentmetadata,omitempty"`
+	FlowHttpTimeoutInSeconds      *int32         `json:"flowHttpTimeoutInSeconds,omitempty" davinci:"flowHttpTimeoutInSeconds,config,omitempty"`
+	IntermediateLoadingScreenCSS  *string        `json:"intermediateLoadingScreenCSS,omitempty" davinci:"intermediateLoadingScreenCSS,config,omitempty"`
+	IntermediateLoadingScreenHTML *string        `json:"intermediateLoadingScreenHTML,omitempty" davinci:"intermediateLoadingScreenHTML,config,omitempty"`
+	LogLevel                      *int32         `json:"logLevel,omitempty" davinci:"logLevel,environmentmetadata,omitempty"`
+	PingOneFlow                   *bool          `json:"pingOneFlow,omitempty" davinci:"pingOneFlow,config,omitempty"`
+	ScrubSensitiveInfo            *bool          `json:"scrubSensitiveInfo,omitempty" davinci:"scrubSensitiveInfo,config,omitempty"`
+	SensitiveInfoFields           *interface{}   `json:"sensitiveInfoFields,omitempty" davinci:"sensitiveInfoFields,config,omitempty"`
+	UseBetaAlgorithm              *bool          `json:"useBetaAlgorithm,omitempty" davinci:"useBetaAlgorithm,config,omitempty"`
+	UseCustomCSS                  *bool          `json:"useCustomCSS,omitempty" davinci:"useCustomCSS,config,omitempty"`
 }
 
 func (o FlowSettings) MarshalJSON() ([]byte, error) {
@@ -28,9 +31,9 @@ func (o FlowSettings) MarshalJSON() ([]byte, error) {
 	return json.Marshal(result)
 }
 
-func (o FlowSettings) ToMap() (map[string]interface{}, error) {
+func (o FlowSettings) ToMap() (map[string]any, error) {
 
-	result := map[string]interface{}{}
+	result := map[string]any{}
 
 	if o.Csp != nil {
 		result["csp"] = o.Csp
@@ -84,9 +87,7 @@ func (o FlowSettings) ToMap() (map[string]interface{}, error) {
 		result["useCustomCSS"] = o.UseCustomCSS
 	}
 
-	for k, v := range o.AdditionalProperties {
-		result[k] = v
-	}
+	maps.Copy(result, o.AdditionalProperties)
 
 	return result, nil
 }
@@ -98,7 +99,7 @@ func (o *FlowSettings) UnmarshalJSON(bytes []byte) (err error) {
 		*o = FlowSettings(varFlowSettings)
 	}
 
-	additionalProperties := make(map[string]interface{})
+	additionalProperties := make(map[string]any)
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "csp")

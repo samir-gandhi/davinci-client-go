@@ -37,7 +37,7 @@ func (d MapCodec) DecodeValue(data []byte, v reflect.Value) error {
 	}
 
 	// Unmarshal the data into a map
-	var tempMap map[string]interface{}
+	var tempMap map[string]any
 	if err := json.Unmarshal(data, &tempMap); err != nil {
 		return err
 	}

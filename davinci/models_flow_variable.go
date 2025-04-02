@@ -1,24 +1,27 @@
 package davinci
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"maps"
+)
 
 type _FlowVariable FlowVariable
 type FlowVariable struct {
-	AdditionalProperties map[string]interface{} `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
-	ID                   *string                `json:"id,omitempty" davinci:"id,environmentmetadata,omitempty"`
-	CompanyID            *string                `json:"companyId,omitempty" davinci:"companyId,environmentmetadata,omitempty"`
-	Context              *string                `json:"context,omitempty" davinci:"context,config,omitempty"`
-	CreatedDate          *EpochTime             `json:"createdDate,omitempty" davinci:"createdDate,flowvariables,omitempty"`
-	CustomerID           *string                `json:"customerId,omitempty" davinci:"customerId,environmentmetadata,omitempty"`
-	Fields               *FlowVariableFields    `json:"fields,omitempty" davinci:"fields,*,omitempty"`
-	FlowID               *string                `json:"flowId,omitempty" davinci:"flowId,environmentmetadata,omitempty"`
-	Key                  *float64               `json:"key,omitempty" davinci:"key,flowmetadata,omitempty"`
-	Label                *string                `json:"label,omitempty" davinci:"label,flowvariables,omitempty"`
-	Name                 string                 `json:"name" davinci:"name,config"`
-	Type                 string                 `json:"type" davinci:"type,config"`
-	UpdatedDate          *EpochTime             `json:"updatedDate,omitempty" davinci:"updatedDate,flowvariables,omitempty"`
-	Value                interface{}            `json:"value,omitempty" davinci:"value,flowvariables,omitempty"`
-	Visibility           *string                `json:"visibility,omitempty" davinci:"visibility,flowvariables,omitempty"`
+	AdditionalProperties map[string]any      `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
+	ID                   *string             `json:"id,omitempty" davinci:"id,environmentmetadata,omitempty"`
+	CompanyID            *string             `json:"companyId,omitempty" davinci:"companyId,environmentmetadata,omitempty"`
+	Context              *string             `json:"context,omitempty" davinci:"context,config,omitempty"`
+	CreatedDate          *EpochTime          `json:"createdDate,omitempty" davinci:"createdDate,flowvariables,omitempty"`
+	CustomerID           *string             `json:"customerId,omitempty" davinci:"customerId,environmentmetadata,omitempty"`
+	Fields               *FlowVariableFields `json:"fields,omitempty" davinci:"fields,*,omitempty"`
+	FlowID               *string             `json:"flowId,omitempty" davinci:"flowId,environmentmetadata,omitempty"`
+	Key                  *float64            `json:"key,omitempty" davinci:"key,flowmetadata,omitempty"`
+	Label                *string             `json:"label,omitempty" davinci:"label,flowvariables,omitempty"`
+	Name                 string              `json:"name" davinci:"name,config"`
+	Type                 string              `json:"type" davinci:"type,config"`
+	UpdatedDate          *EpochTime          `json:"updatedDate,omitempty" davinci:"updatedDate,flowvariables,omitempty"`
+	Value                interface{}         `json:"value,omitempty" davinci:"value,flowvariables,omitempty"`
+	Visibility           *string             `json:"visibility,omitempty" davinci:"visibility,flowvariables,omitempty"`
 }
 
 func (o FlowVariable) MarshalJSON() ([]byte, error) {
@@ -29,9 +32,9 @@ func (o FlowVariable) MarshalJSON() ([]byte, error) {
 	return json.Marshal(result)
 }
 
-func (o FlowVariable) ToMap() (map[string]interface{}, error) {
+func (o FlowVariable) ToMap() (map[string]any, error) {
 
-	result := map[string]interface{}{}
+	result := map[string]any{}
 
 	result["id"] = o.ID
 	result["companyId"] = o.CompanyID
@@ -52,9 +55,7 @@ func (o FlowVariable) ToMap() (map[string]interface{}, error) {
 	result["value"] = o.Value
 	result["visibility"] = o.Visibility
 
-	for k, v := range o.AdditionalProperties {
-		result[k] = v
-	}
+	maps.Copy(result, o.AdditionalProperties)
 
 	return result, nil
 }
@@ -66,7 +67,7 @@ func (o *FlowVariable) UnmarshalJSON(bytes []byte) (err error) {
 		*o = FlowVariable(varFlowVariable)
 	}
 
-	additionalProperties := make(map[string]interface{})
+	additionalProperties := make(map[string]any)
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")

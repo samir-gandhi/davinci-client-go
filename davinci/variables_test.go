@@ -11,7 +11,7 @@ import (
 	"github.com/samir-gandhi/davinci-client-go/tools"
 )
 
-var testDataVars = map[string]interface{}{
+var testDataVars = map[string]any{
 	"params": map[string]davinci.Params{
 		"a": {
 			Page:  "0",

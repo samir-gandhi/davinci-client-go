@@ -1,16 +1,19 @@
 package davinci
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"maps"
+)
 
 type _Properties Properties
 type Properties struct {
-	AdditionalProperties map[string]interface{} `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
-	Form                 *Form                  `json:"form,omitempty" davinci:"form,config,omitempty"`
-	FormData             *FormData              `json:"formData,omitempty" davinci:"formData,config,omitempty"`
-	SubFlowID            *SubFlowID             `json:"subFlowId,omitempty" davinci:"subFlowId,config,omitempty"`
-	SubFlowVersionID     *SubFlowVersionID      `json:"subFlowVersionId,omitempty" davinci:"subFlowVersionId,config,omitempty"`
-	SaveFlowVariables    *SaveFlowVariables     `json:"saveFlowVariables,omitempty" davinci:"saveFlowVariables,*,omitempty"`
-	SaveVariables        *SaveFlowVariables     `json:"saveVariables,omitempty" davinci:"saveVariables,*,omitempty"`
+	AdditionalProperties map[string]any     `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
+	Form                 *Form              `json:"form,omitempty" davinci:"form,config,omitempty"`
+	FormData             *FormData          `json:"formData,omitempty" davinci:"formData,config,omitempty"`
+	SubFlowID            *SubFlowID         `json:"subFlowId,omitempty" davinci:"subFlowId,config,omitempty"`
+	SubFlowVersionID     *SubFlowVersionID  `json:"subFlowVersionId,omitempty" davinci:"subFlowVersionId,config,omitempty"`
+	SaveFlowVariables    *SaveFlowVariables `json:"saveFlowVariables,omitempty" davinci:"saveFlowVariables,*,omitempty"`
+	SaveVariables        *SaveFlowVariables `json:"saveVariables,omitempty" davinci:"saveVariables,*,omitempty"`
 }
 
 func (o Properties) MarshalJSON() ([]byte, error) {
@@ -21,9 +24,9 @@ func (o Properties) MarshalJSON() ([]byte, error) {
 	return json.Marshal(result)
 }
 
-func (o Properties) ToMap() (map[string]interface{}, error) {
+func (o Properties) ToMap() (map[string]any, error) {
 
-	result := map[string]interface{}{}
+	result := map[string]any{}
 
 	if o.Form != nil {
 		result["form"] = o.Form
@@ -49,9 +52,7 @@ func (o Properties) ToMap() (map[string]interface{}, error) {
 		result["saveVariables"] = o.SaveVariables
 	}
 
-	for k, v := range o.AdditionalProperties {
-		result[k] = v
-	}
+	maps.Copy(result, o.AdditionalProperties)
 
 	return result, nil
 }
@@ -63,7 +64,7 @@ func (o *Properties) UnmarshalJSON(bytes []byte) (err error) {
 		*o = Properties(varProperties)
 	}
 
-	additionalProperties := make(map[string]interface{})
+	additionalProperties := make(map[string]any)
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "form")

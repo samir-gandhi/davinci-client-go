@@ -80,7 +80,7 @@ func TestMarshal_AdditionalProperties(t *testing.T) {
 		y := float64(50)
 
 		newObj := davinci.Position{
-			AdditionalProperties: map[string]interface{}{
+			AdditionalProperties: map[string]any{
 				"custom-attribute-1": "custom-value-1",
 				"custom-attribute-2": "custom-value-2",
 			},
@@ -105,7 +105,7 @@ func TestMarshal_AdditionalProperties(t *testing.T) {
 		y := float64(50)
 
 		newObj := davinci.Position{
-			AdditionalProperties: map[string]interface{}{
+			AdditionalProperties: map[string]any{
 				"custom-attribute-1": "custom-value-1",
 				"custom-attribute-2": "custom-value-2",
 			},
@@ -181,7 +181,7 @@ func TestMarshal_Nested_AdditionalProperties(t *testing.T) {
 			CompanyID: &companyId,
 			Context:   &context,
 			Fields: &davinci.FlowVariableFields{
-				AdditionalProperties: map[string]interface{}{
+				AdditionalProperties: map[string]any{
 					"custom-attribute-1": "custom-value-1",
 					"custom-attribute-2": "custom-value-2",
 				},
@@ -211,7 +211,7 @@ func TestMarshal_Nested_AdditionalProperties(t *testing.T) {
 		jsonString := `{"custom-attribute-1":"custom-value-1","custom-attribute-2":"custom-value-2","fields":{"custom-attribute-1":"custom-sub-value-1","custom-attribute-2":"custom-sub-value-2"}}`
 
 		newObj := davinci.FlowVariable{
-			AdditionalProperties: map[string]interface{}{
+			AdditionalProperties: map[string]any{
 				"custom-attribute-1": "custom-value-1",
 				"custom-attribute-2": "custom-value-2",
 			},
@@ -220,7 +220,7 @@ func TestMarshal_Nested_AdditionalProperties(t *testing.T) {
 			CompanyID: &companyId,
 			Context:   &context,
 			Fields: &davinci.FlowVariableFields{
-				AdditionalProperties: map[string]interface{}{
+				AdditionalProperties: map[string]any{
 					"custom-attribute-1": "custom-sub-value-1",
 					"custom-attribute-2": "custom-sub-value-2",
 				},
@@ -279,7 +279,7 @@ func TestMarshal_Nested_AdditionalProperties(t *testing.T) {
 // 	}
 
 // 	expectedObj := TestModel{
-// 		AdditionalProperties: map[string]interface{}{
+// 		AdditionalProperties: map[string]any{
 // 			"custom-attribute-1": "custom-value-1",
 // 			"custom-attribute-2": "custom-value-2",
 // 		},
@@ -289,7 +289,7 @@ func TestMarshal_Nested_AdditionalProperties(t *testing.T) {
 // 		Test4: func() *string { s := "test4Value"; return &s }(),
 // 		Test5: func() *TestModel2 {
 // 			s := TestModel2{
-// 				AdditionalProperties: map[string]interface{}{
+// 				AdditionalProperties: map[string]any{
 // 					"custom-attribute-1": "custom-value-1",
 // 					"custom-attribute-2": "custom-value-2",
 // 				},
@@ -347,7 +347,7 @@ func TestMarshal_Nested_AdditionalProperties(t *testing.T) {
 // 		}
 
 // 		expectedObj := TestModel{
-// 			AdditionalProperties: map[string]interface{}{
+// 			AdditionalProperties: map[string]any{
 // 				"custom-attribute-1": "custom-value-1",
 // 				"custom-attribute-2": "custom-value-2",
 // 			},
@@ -357,7 +357,7 @@ func TestMarshal_Nested_AdditionalProperties(t *testing.T) {
 // 			Test4: func() *string { s := "test4Value"; return &s }(),
 // 			Test5: func() *TestModel2 {
 // 				s := TestModel2{
-// 					AdditionalProperties: map[string]interface{}{
+// 					AdditionalProperties: map[string]any{
 // 						"custom-attribute-1": "custom-value-1",
 // 						"custom-attribute-2": "custom-value-2",
 // 					},
@@ -415,7 +415,7 @@ func TestMarshal_Nested_AdditionalProperties(t *testing.T) {
 // 		}
 
 // 		expectedObj := TestModel{
-// 			AdditionalProperties: map[string]interface{}{
+// 			AdditionalProperties: map[string]any{
 // 				"custom-attribute-1": "custom-value-1",
 // 				"custom-attribute-2": "custom-value-2",
 // 			},
@@ -425,7 +425,7 @@ func TestMarshal_Nested_AdditionalProperties(t *testing.T) {
 // 			//Test4: func() *string { s := "test4Value"; return &s }(),
 // 			Test5: func() *TestModel2 {
 // 				s := TestModel2{
-// 					AdditionalProperties: map[string]interface{}{
+// 					AdditionalProperties: map[string]any{
 // 						"custom-attribute-1": "custom-value-1",
 // 						"custom-attribute-2": "custom-value-2",
 // 					},
@@ -483,7 +483,7 @@ func TestMarshal_Nested_AdditionalProperties(t *testing.T) {
 // 		}
 
 // 		expectedObj := TestModel{
-// 			//AdditionalProperties: map[string]interface{}{
+// 			//AdditionalProperties: map[string]any{
 // 			//	"custom-attribute-1": "custom-value-1",
 // 			//	"custom-attribute-2": "custom-value-2",
 // 			//},
@@ -493,7 +493,7 @@ func TestMarshal_Nested_AdditionalProperties(t *testing.T) {
 // 			Test4: func() *string { s := "test4Value"; return &s }(),
 // 			Test5: func() *TestModel2 {
 // 				s := TestModel2{
-// 					// AdditionalProperties: map[string]interface{}{
+// 					// AdditionalProperties: map[string]any{
 // 					// 	"custom-attribute-1": "custom-value-1",
 // 					// 	"custom-attribute-2": "custom-value-2",
 // 					// },
@@ -551,7 +551,7 @@ func TestMarshal_Nested_AdditionalProperties(t *testing.T) {
 // 		}
 
 // 		expectedObj := TestModel{
-// 			AdditionalProperties: map[string]interface{}{
+// 			AdditionalProperties: map[string]any{
 // 				"custom-attribute-1": "custom-value-1",
 // 				"custom-attribute-2": "custom-value-2",
 // 			},
@@ -561,7 +561,7 @@ func TestMarshal_Nested_AdditionalProperties(t *testing.T) {
 // 			Test4: func() *string { s := "test4Value"; return &s }(),
 // 			Test5: func() *TestModel2 {
 // 				s := TestModel2{
-// 					AdditionalProperties: map[string]interface{}{
+// 					AdditionalProperties: map[string]any{
 // 						"custom-attribute-1": "custom-value-1",
 // 						"custom-attribute-2": "custom-value-2",
 // 					},
@@ -619,7 +619,7 @@ func TestMarshal_Nested_AdditionalProperties(t *testing.T) {
 // 		}
 
 // 		expectedObj := TestModel{
-// 			AdditionalProperties: map[string]interface{}{
+// 			AdditionalProperties: map[string]any{
 // 				"custom-attribute-1": "custom-value-1",
 // 				"custom-attribute-2": "custom-value-2",
 // 			},
@@ -629,7 +629,7 @@ func TestMarshal_Nested_AdditionalProperties(t *testing.T) {
 // 			Test4: func() *string { s := "test4Value"; return &s }(),
 // 			Test5: func() *TestModel2 {
 // 				s := TestModel2{
-// 					AdditionalProperties: map[string]interface{}{
+// 					AdditionalProperties: map[string]any{
 // 						"custom-attribute-1": "custom-value-1",
 // 						"custom-attribute-2": "custom-value-2",
 // 					},

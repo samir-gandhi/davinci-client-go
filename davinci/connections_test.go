@@ -29,7 +29,7 @@ func RandString(n int) string {
 // 	} `json:"envId`
 // }
 
-var testDataConnections = map[string]interface{}{
+var testDataConnections = map[string]any{
 	"params": map[string]davinci.Params{
 		"a": {"1", "10", nil},
 		"b": {"1000", "10", nil},

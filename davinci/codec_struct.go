@@ -41,8 +41,8 @@ func (d StructCodec) DecodeValue(data []byte, v reflect.Value) error {
 
 	typ := v.Type()
 
-	// Unmarshal the data into a map[string]interface{} to work with.
-	var tempMap map[string]interface{}
+	// Unmarshal the data into a map[string]any to work with.
+	var tempMap map[string]any
 	if err := json.Unmarshal(data, &tempMap); err != nil {
 		return err
 	}
@@ -88,7 +88,7 @@ func (d StructCodec) DecodeValue(data []byte, v reflect.Value) error {
 			}
 
 			if field.Kind() != reflect.Map || field.Type().Key().Kind() != reflect.String || field.Type().Elem().Kind() != reflect.Interface {
-				return fmt.Errorf("field with purpose 'unmappedproperties' must be a map[string]interface{}")
+				return fmt.Errorf("field with purpose 'unmappedproperties' must be a map[string]any")
 			}
 
 			unmappedPropertiesField = field
@@ -157,15 +157,15 @@ func (d StructCodec) EncodeValue(v reflect.Value) ([]byte, error) {
 	// Convert the JSON object to a byte slice
 	resultBytes := []byte(result)
 
-	// Unmarshal the data into a map[string]interface{} to work with.
-	var tempMap map[string]interface{}
+	// Unmarshal the data into a map[string]any to work with.
+	var tempMap map[string]any
 	if err := json.Unmarshal(resultBytes, &tempMap); err != nil {
 		return nil, err
 	}
 
 	//Deal with additional / unmapped properties
 	if !d.eCtx.Opts.IgnoreUnmappedProperties && unmappedPropertiesField.Kind() != reflect.Invalid {
-		for k, v := range unmappedPropertiesField.Interface().(map[string]interface{}) {
+		for k, v := range unmappedPropertiesField.Interface().(map[string]any) {
 			tempMap[k] = v
 		}
 	}
@@ -221,7 +221,7 @@ func (d StructCodec) encodePartValue(v reflect.Value, unmappedPropertiesField *r
 			}
 
 			if field.Kind() != reflect.Map || field.Type().Key().Kind() != reflect.String || field.Type().Elem().Kind() != reflect.Interface {
-				return nil, fmt.Errorf("field with purpose 'unmappedproperties' must be a map[string]interface{}")
+				return nil, fmt.Errorf("field with purpose 'unmappedproperties' must be a map[string]any")
 			}
 
 			*unmappedPropertiesField = field

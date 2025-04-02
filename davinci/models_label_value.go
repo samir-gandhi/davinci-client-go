@@ -1,12 +1,15 @@
 package davinci
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"maps"
+)
 
 type _LabelValue LabelValue
 type LabelValue struct {
-	AdditionalProperties map[string]interface{} `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
-	Label                *string                `json:"label,omitempty" davinci:"label,config,omitempty"`
-	Value                *string                `json:"value,omitempty" davinci:"value,config,omitempty"`
+	AdditionalProperties map[string]any `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
+	Label                *string        `json:"label,omitempty" davinci:"label,config,omitempty"`
+	Value                *string        `json:"value,omitempty" davinci:"value,config,omitempty"`
 }
 
 func (o LabelValue) MarshalJSON() ([]byte, error) {
@@ -17,9 +20,9 @@ func (o LabelValue) MarshalJSON() ([]byte, error) {
 	return json.Marshal(result)
 }
 
-func (o LabelValue) ToMap() (map[string]interface{}, error) {
+func (o LabelValue) ToMap() (map[string]any, error) {
 
-	result := map[string]interface{}{}
+	result := map[string]any{}
 
 	if o.Label != nil {
 		result["label"] = o.Label
@@ -29,9 +32,7 @@ func (o LabelValue) ToMap() (map[string]interface{}, error) {
 		result["value"] = o.Value
 	}
 
-	for k, v := range o.AdditionalProperties {
-		result[k] = v
-	}
+	maps.Copy(result, o.AdditionalProperties)
 
 	return result, nil
 }
@@ -43,7 +44,7 @@ func (o *LabelValue) UnmarshalJSON(bytes []byte) (err error) {
 		*o = LabelValue(varLabelValue)
 	}
 
-	additionalProperties := make(map[string]interface{})
+	additionalProperties := make(map[string]any)
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "label")
