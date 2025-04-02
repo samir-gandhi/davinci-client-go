@@ -20,7 +20,7 @@ type FlowUpdateConfiguration struct {
 	GraphData    *GraphData    `json:"graphData,omitempty" davinci:"graphData,*,omitempty"`
 	InputSchema  []interface{} `json:"inputSchema,omitempty" davinci:"inputSchema,config,omitempty"`
 	OutputSchema *OutputSchema `json:"outputSchema,omitempty" davinci:"outputSchema,*,omitempty"`
-	Settings     interface{}   `json:"settings,omitempty" davinci:"settings,config,omitempty"`
+	Settings     *FlowSettings `json:"settings,omitempty" davinci:"settings,*,omitempty"`
 	Trigger      *Trigger      `json:"trigger,omitempty" davinci:"trigger,*,omitempty"`
 }
 
