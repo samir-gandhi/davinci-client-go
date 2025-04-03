@@ -93,8 +93,8 @@ func TestUnmarshal_AdditionalProperties(t *testing.T) {
 			t.Fatal(err)
 		}
 
-		if !cmp.Equal(newObj.AdditionalProperties, map[string]interface{}{}, cmpopts.EquateEmpty()) {
-			t.Fatalf("Additional Properties Equality failure (-want, +got):\n%s", cmp.Diff(map[string]interface{}{}, newObj.AdditionalProperties))
+		if !cmp.Equal(newObj.AdditionalProperties, map[string]any{}, cmpopts.EquateEmpty()) {
+			t.Fatalf("Additional Properties Equality failure (-want, +got):\n%s", cmp.Diff(map[string]any{}, newObj.AdditionalProperties))
 		}
 	})
 
@@ -112,7 +112,7 @@ func TestUnmarshal_AdditionalProperties(t *testing.T) {
 			t.Fatal(err)
 		}
 
-		additionalProperties := map[string]interface{}{
+		additionalProperties := map[string]any{
 			"custom-attribute-1": "custom-value-1",
 			"custom-attribute-2": "custom-value-2",
 		}
@@ -145,7 +145,7 @@ func TestUnmarshal_AdditionalProperties(t *testing.T) {
 		}
 
 		expectedObj := davinci.Position{
-			AdditionalProperties: map[string]interface{}{
+			AdditionalProperties: map[string]any{
 				"custom-attribute-1": "custom-value-1",
 				"custom-attribute-2": "custom-value-2",
 			},
@@ -176,8 +176,8 @@ func TestUnmarshal_Nested_AdditionalProperties(t *testing.T) {
 			t.Fatal(err)
 		}
 
-		if !cmp.Equal(newObj.Fields.AdditionalProperties, map[string]interface{}{}, cmpopts.EquateEmpty()) {
-			t.Fatalf("Additional Properties Equality failure (-want, +got):\n%s", cmp.Diff(map[string]interface{}{}, newObj.AdditionalProperties))
+		if !cmp.Equal(newObj.Fields.AdditionalProperties, map[string]any{}, cmpopts.EquateEmpty()) {
+			t.Fatalf("Additional Properties Equality failure (-want, +got):\n%s", cmp.Diff(map[string]any{}, newObj.AdditionalProperties))
 		}
 	})
 
@@ -197,7 +197,7 @@ func TestUnmarshal_Nested_AdditionalProperties(t *testing.T) {
 			t.Fatal(err)
 		}
 
-		additionalProperties := map[string]interface{}{
+		additionalProperties := map[string]any{
 			"custom-attribute-1": "custom-value-1",
 			"custom-attribute-2": "custom-value-2",
 		}
@@ -232,12 +232,12 @@ func TestUnmarshal_Nested_AdditionalProperties(t *testing.T) {
 		}
 
 		expectedObj := davinci.FlowVariable{
-			AdditionalProperties: map[string]interface{}{
+			AdditionalProperties: map[string]any{
 				"custom-attribute-1": "custom-value-1",
 				"custom-attribute-2": "custom-value-2",
 			},
 			Fields: &davinci.FlowVariableFields{
-				AdditionalProperties: map[string]interface{}{
+				AdditionalProperties: map[string]any{
 					"custom-attribute-1": "custom-value-1",
 					"custom-attribute-2": "custom-value-2",
 				},
@@ -282,7 +282,7 @@ func TestUnmarshal_Filter(t *testing.T) {
 		}
 
 		expectedObj := test.TestModel{
-			AdditionalProperties: map[string]interface{}{
+			AdditionalProperties: map[string]any{
 				"custom-attribute-1": "custom-value-1",
 				"custom-attribute-2": "custom-value-2",
 			},
@@ -292,7 +292,7 @@ func TestUnmarshal_Filter(t *testing.T) {
 			Test4: func() *string { s := "test4Value"; return &s }(),
 			Test5: func() *test.TestModel2 {
 				s := test.TestModel2{
-					AdditionalProperties: map[string]interface{}{
+					AdditionalProperties: map[string]any{
 						"custom-attribute-1": "custom-value-1",
 						"custom-attribute-2": "custom-value-2",
 					},
@@ -350,7 +350,7 @@ func TestUnmarshal_Filter(t *testing.T) {
 		}
 
 		expectedObj := test.TestModel{
-			AdditionalProperties: map[string]interface{}{
+			AdditionalProperties: map[string]any{
 				"custom-attribute-1": "custom-value-1",
 				"custom-attribute-2": "custom-value-2",
 			},
@@ -360,7 +360,7 @@ func TestUnmarshal_Filter(t *testing.T) {
 			Test4: func() *string { s := "test4Value"; return &s }(),
 			Test5: func() *test.TestModel2 {
 				s := test.TestModel2{
-					AdditionalProperties: map[string]interface{}{
+					AdditionalProperties: map[string]any{
 						"custom-attribute-1": "custom-value-1",
 						"custom-attribute-2": "custom-value-2",
 					},
@@ -418,7 +418,7 @@ func TestUnmarshal_Filter(t *testing.T) {
 		}
 
 		expectedObj := test.TestModel{
-			AdditionalProperties: map[string]interface{}{
+			AdditionalProperties: map[string]any{
 				"custom-attribute-1": "custom-value-1",
 				"custom-attribute-2": "custom-value-2",
 			},
@@ -428,7 +428,7 @@ func TestUnmarshal_Filter(t *testing.T) {
 			//Test4: func() *string { s := "test4Value"; return &s }(),
 			Test5: func() *test.TestModel2 {
 				s := test.TestModel2{
-					AdditionalProperties: map[string]interface{}{
+					AdditionalProperties: map[string]any{
 						"custom-attribute-1": "custom-value-1",
 						"custom-attribute-2": "custom-value-2",
 					},
@@ -486,7 +486,7 @@ func TestUnmarshal_Filter(t *testing.T) {
 		}
 
 		expectedObj := test.TestModel{
-			//AdditionalProperties: map[string]interface{}{
+			//AdditionalProperties: map[string]any{
 			//	"custom-attribute-1": "custom-value-1",
 			//	"custom-attribute-2": "custom-value-2",
 			//},
@@ -496,7 +496,7 @@ func TestUnmarshal_Filter(t *testing.T) {
 			Test4: func() *string { s := "test4Value"; return &s }(),
 			Test5: func() *test.TestModel2 {
 				s := test.TestModel2{
-					// AdditionalProperties: map[string]interface{}{
+					// AdditionalProperties: map[string]any{
 					// 	"custom-attribute-1": "custom-value-1",
 					// 	"custom-attribute-2": "custom-value-2",
 					// },
@@ -554,7 +554,7 @@ func TestUnmarshal_Filter(t *testing.T) {
 		}
 
 		expectedObj := test.TestModel{
-			AdditionalProperties: map[string]interface{}{
+			AdditionalProperties: map[string]any{
 				"custom-attribute-1": "custom-value-1",
 				"custom-attribute-2": "custom-value-2",
 			},
@@ -564,7 +564,7 @@ func TestUnmarshal_Filter(t *testing.T) {
 			Test4: func() *string { s := "test4Value"; return &s }(),
 			Test5: func() *test.TestModel2 {
 				s := test.TestModel2{
-					AdditionalProperties: map[string]interface{}{
+					AdditionalProperties: map[string]any{
 						"custom-attribute-1": "custom-value-1",
 						"custom-attribute-2": "custom-value-2",
 					},
@@ -622,7 +622,7 @@ func TestUnmarshal_Filter(t *testing.T) {
 		}
 
 		expectedObj := test.TestModel{
-			AdditionalProperties: map[string]interface{}{
+			AdditionalProperties: map[string]any{
 				"custom-attribute-1": "custom-value-1",
 				"custom-attribute-2": "custom-value-2",
 			},
@@ -632,7 +632,7 @@ func TestUnmarshal_Filter(t *testing.T) {
 			Test4: func() *string { s := "test4Value"; return &s }(),
 			Test5: func() *test.TestModel2 {
 				s := test.TestModel2{
-					AdditionalProperties: map[string]interface{}{
+					AdditionalProperties: map[string]any{
 						"custom-attribute-1": "custom-value-1",
 						"custom-attribute-2": "custom-value-2",
 					},

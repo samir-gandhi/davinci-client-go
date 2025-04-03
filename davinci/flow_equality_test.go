@@ -51,8 +51,10 @@ func TestEqual_Basic(t *testing.T) {
 		"not-equal-added-attribute": {
 			parentObject: func() davinci.Flow {
 				r := test.Data_FullBasic()
-				r.Settings = map[string]interface{}{
-					"new-key": "new-value",
+				r.Settings = &davinci.FlowSettings{
+					AdditionalProperties: map[string]any{
+						"new-key": "new-value",
+					},
 				}
 				return r
 			}(),
@@ -84,7 +86,7 @@ func TestEqual_UnmappedPropertiesOption(t *testing.T) {
 			parentObject: test.Data_FullBasic(),
 			compareObject: func() davinci.Flow {
 				r := test.Data_FullBasic()
-				r.AdditionalProperties = map[string]interface{}{
+				r.AdditionalProperties = map[string]any{
 					"modified-key": "modified-key-value",
 				}
 				return r
@@ -101,7 +103,7 @@ func TestEqual_UnmappedPropertiesOption(t *testing.T) {
 			parentObject: test.Data_FullBasic(),
 			compareObject: func() davinci.Flow {
 				r := test.Data_FullBasic()
-				r.AdditionalProperties = map[string]interface{}{
+				r.AdditionalProperties = map[string]any{
 					"modified-key": "modified-key-value",
 				}
 				return r
@@ -166,7 +168,7 @@ func TestEqual_UnmappedPropertiesOption(t *testing.T) {
 			parentObject: test.Data_FullBasic(),
 			compareObject: func() davinci.Flow {
 				r := test.Data_FullBasic()
-				r.GraphData.AdditionalProperties = map[string]interface{}{
+				r.GraphData.AdditionalProperties = map[string]any{
 					"modified-key": "modified-key-value",
 				}
 				return r
@@ -183,7 +185,7 @@ func TestEqual_UnmappedPropertiesOption(t *testing.T) {
 			parentObject: test.Data_FullBasic(),
 			compareObject: func() davinci.Flow {
 				r := test.Data_FullBasic()
-				r.GraphData.AdditionalProperties = map[string]interface{}{
+				r.GraphData.AdditionalProperties = map[string]any{
 					"modified-key": "modified-key-value",
 				}
 				return r

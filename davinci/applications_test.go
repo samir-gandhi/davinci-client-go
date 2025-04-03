@@ -10,7 +10,7 @@ import (
 	"github.com/samir-gandhi/davinci-client-go/davinci"
 )
 
-var testDataApps = map[string]interface{}{
+var testDataApps = map[string]any{
 	"params": map[string]davinci.Params{
 		"a": {
 			Page:  "0",

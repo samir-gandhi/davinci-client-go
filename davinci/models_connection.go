@@ -1,10 +1,13 @@
 package davinci
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"maps"
+)
 
 type _Connection Connection
 type Connection struct {
-	AdditionalProperties map[string]interface{}        `json:"additionalProperties,omitempty"`
+	AdditionalProperties map[string]any                `json:"additionalProperties,omitempty"`
 	CustomerID           *string                       `json:"customerId,omitempty"`
 	ConnectorID          *string                       `json:"connectorId,omitempty"`
 	Name                 *string                       `json:"name,omitempty"`
@@ -23,9 +26,9 @@ func (o Connection) MarshalJSON() ([]byte, error) {
 	return json.Marshal(result)
 }
 
-func (o Connection) ToMap() (map[string]interface{}, error) {
+func (o Connection) ToMap() (map[string]any, error) {
 
-	result := map[string]interface{}{}
+	result := map[string]any{}
 
 	if o.CustomerID != nil {
 		result["customerId"] = o.CustomerID
@@ -59,9 +62,7 @@ func (o Connection) ToMap() (map[string]interface{}, error) {
 		result["companyId"] = o.CompanyID
 	}
 
-	for k, v := range o.AdditionalProperties {
-		result[k] = v
-	}
+	maps.Copy(result, o.AdditionalProperties)
 
 	return result, nil
 }
@@ -73,7 +74,7 @@ func (o *Connection) UnmarshalJSON(bytes []byte) (err error) {
 		*o = Connection(varConnection)
 	}
 
-	additionalProperties := make(map[string]interface{})
+	additionalProperties := make(map[string]any)
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "customerId")

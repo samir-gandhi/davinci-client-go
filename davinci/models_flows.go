@@ -36,4 +36,4 @@ type FlowUpdate struct {
 //		Value *bool `json:"value,omitempty"`
 //	}
 
-type AdditionalProperties map[string]interface{}
+type AdditionalProperties map[string]any

@@ -117,7 +117,7 @@ func ValidFlowsInfoExport(data []byte, cmpOpts ExportCmpOpts) (err error) {
 									Nodes: []Node{
 										{
 											Data: &NodeData{
-												AdditionalProperties: map[string]interface{}{
+												AdditionalProperties: map[string]any{
 													"test1": "test1", // to overcome odd behaviours with cmpopts
 												},
 											},
@@ -200,7 +200,7 @@ func ValidFlowInfoExport(data []byte, cmpOpts ExportCmpOpts) (err error) {
 								Nodes: []Node{
 									{
 										Data: &NodeData{
-											AdditionalProperties: map[string]interface{}{
+											AdditionalProperties: map[string]any{
 												"test1": "test1", // to overcome odd behaviours with cmpopts
 											},
 										},
@@ -300,7 +300,7 @@ func ValidFlowsExport(data []byte, cmpOpts ExportCmpOpts) (err error) {
 									Nodes: []Node{
 										{
 											Data: &NodeData{
-												AdditionalProperties: map[string]interface{}{
+												AdditionalProperties: map[string]any{
 													"test1": "test1", // to overcome odd behaviours with cmpopts
 												},
 											},
@@ -382,7 +382,7 @@ func ValidFlowExport(data []byte, cmpOpts ExportCmpOpts) (err error) {
 							Nodes: []Node{
 								{
 									Data: &NodeData{
-										AdditionalProperties: map[string]interface{}{
+										AdditionalProperties: map[string]any{
 											"test1": "test1", // to overcome odd behaviours with cmpopts
 										},
 									},

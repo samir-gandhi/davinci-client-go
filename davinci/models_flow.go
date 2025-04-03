@@ -1,10 +1,13 @@
 package davinci
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"maps"
+)
 
 type _Flow Flow
 type Flow struct {
-	AdditionalProperties map[string]interface{} `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
+	AdditionalProperties map[string]any `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
 	FlowConfiguration
 	FlowEnvironmentMetadata
 	FlowMetadata
@@ -20,7 +23,7 @@ type FlowUpdateConfiguration struct {
 	GraphData    *GraphData    `json:"graphData,omitempty" davinci:"graphData,*,omitempty"`
 	InputSchema  []interface{} `json:"inputSchema,omitempty" davinci:"inputSchema,config,omitempty"`
 	OutputSchema *OutputSchema `json:"outputSchema,omitempty" davinci:"outputSchema,*,omitempty"`
-	Settings     interface{}   `json:"settings,omitempty" davinci:"settings,config,omitempty"`
+	Settings     *FlowSettings `json:"settings,omitempty" davinci:"settings,*,omitempty"`
 	Trigger      *Trigger      `json:"trigger,omitempty" davinci:"trigger,*,omitempty"`
 }
 
@@ -69,7 +72,7 @@ func (o *Flow) UnmarshalDavinci(bytes []byte, opts ExportCmpOpts) (err error) {
 
 	*o = Flow(varFlow)
 
-	additionalProperties := make(map[string]interface{})
+	additionalProperties := make(map[string]any)
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err != nil {
 		return err
@@ -121,9 +124,9 @@ func (o Flow) MarshalJSON() ([]byte, error) {
 	return json.Marshal(result)
 }
 
-func (o Flow) ToMap() (map[string]interface{}, error) {
+func (o Flow) ToMap() (map[string]any, error) {
 
-	result := map[string]interface{}{}
+	result := map[string]any{}
 
 	if o.Description != nil {
 		result["authTokenExpireIds"] = o.AuthTokenExpireIds
@@ -232,9 +235,7 @@ func (o Flow) ToMap() (map[string]interface{}, error) {
 		result["versionInfo"] = o.VersionInfo
 	}
 
-	for k, v := range o.AdditionalProperties {
-		result[k] = v
-	}
+	maps.Copy(result, o.AdditionalProperties)
 
 	return result, nil
 }
@@ -246,7 +247,7 @@ func (o *Flow) UnmarshalJSON(bytes []byte) (err error) {
 		*o = Flow(varFlow)
 	}
 
-	additionalProperties := make(map[string]interface{})
+	additionalProperties := make(map[string]any)
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "authTokenExpireIds")
