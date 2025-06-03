@@ -11,7 +11,15 @@ type FlowSettings struct {
 	Csp                             *FlowSettingsStringValue `json:"csp,omitempty" davinci:"csp,config,omitempty"`
 	Css                             *FlowSettingsStringValue `json:"css,omitempty" davinci:"css,config,omitempty"`
 	CssLinks                        *[]string                `json:"cssLinks" davinci:"cssLinks,config"`
+	CustomErrorScreenBrandLogoUrl   *string                  `json:"customErrorScreenBrandLogoUrl,omitempty" davinci:"customErrorScreenBrandLogoUrl,config,omitempty"`
+	CustomErrorShowFooter           *bool                    `json:"customErrorShowFooter,omitempty" davinci:"customErrorShowFooter,config,omitempty"`
+	CustomFaviconLink               *string                  `json:"customFaviconLink,omitempty" davinci:"customFaviconLink,config,omitempty"`
+	CustomLogoURLSelection          *interface{}             `json:"customLogoURLSelection,omitempty" davinci:"customLogoURLSelection,config,omitempty"`
+	CustomTitle                     *string                  `json:"customTitle,omitempty" davinci:"customTitle,config,omitempty"`
 	DebugMode                       *bool                    `json:"debugMode,omitempty" davinci:"debugMode,environmentmetadata,omitempty"`
+	DefaultErrorScreenBrandLogo     *bool                    `json:"defaultErrorScreenBrandLogo,omitempty" davinci:"defaultErrorScreenBrandLogo,config,omitempty"`
+	DisplayNodeIDs                  *bool                    `json:"displayNodeIDs,omitempty" davinci:"displayNodeIDs,designercue,omitempty"`
+	DoNotSubstituteUnreplacedFields *bool                    `json:"doNotSubstituteUnreplacedFields,omitempty" davinci:"doNotSubstituteUnreplacedFields,config,omitempty"`
 	FlowHttpTimeoutInSeconds        *int32                   `json:"flowHttpTimeoutInSeconds,omitempty" davinci:"flowHttpTimeoutInSeconds,config,omitempty"`
 	FlowTimeoutInSeconds            *int32                   `json:"flowTimeoutInSeconds,omitempty" davinci:"flowTimeoutInSeconds,config,omitempty"`
 	IntermediateLoadingScreenCSS    *FlowSettingsStringValue `json:"intermediateLoadingScreenCSS,omitempty" davinci:"intermediateLoadingScreenCSS,config,omitempty"`
@@ -23,8 +31,10 @@ type FlowSettings struct {
 	ScrubSensitiveInfo              *bool                    `json:"scrubSensitiveInfo,omitempty" davinci:"scrubSensitiveInfo,config,omitempty"`
 	SensitiveInfoFields             *interface{}             `json:"sensitiveInfoFields,omitempty" davinci:"sensitiveInfoFields,config,omitempty"`
 	UseBetaAlgorithm                *bool                    `json:"useBetaAlgorithm,omitempty" davinci:"useBetaAlgorithm,config,omitempty"`
+	UseCsp                          *bool                    `json:"useCsp,omitempty" davinci:"useCsp,config,omitempty"`
 	UseCustomCSS                    *bool                    `json:"useCustomCSS,omitempty" davinci:"useCustomCSS,config,omitempty"`
 	UseCustomScript                 *bool                    `json:"useCustomScript,omitempty" davinci:"useCustomScript,config,omitempty"`
+	UseIntermediateLoadingScreen    *bool                    `json:"useIntermediateLoadingScreen,omitempty" davinci:"useIntermediateLoadingScreen,config,omitempty"`
 }
 
 func (o FlowSettings) MarshalJSON() ([]byte, error) {
@@ -55,8 +65,40 @@ func (o FlowSettings) ToMap() (map[string]any, error) {
 		}
 	}
 
+	if o.CustomErrorScreenBrandLogoUrl != nil {
+		result["customErrorScreenBrandLogoUrl"] = o.CustomErrorScreenBrandLogoUrl
+	}
+
+	if o.CustomErrorShowFooter != nil {
+		result["customErrorShowFooter"] = o.CustomErrorShowFooter
+	}
+
+	if o.CustomFaviconLink != nil {
+		result["customFaviconLink"] = o.CustomFaviconLink
+	}
+
+	if o.CustomLogoURLSelection != nil {
+		result["customLogoURLSelection"] = o.CustomLogoURLSelection
+	}
+
+	if o.CustomTitle != nil {
+		result["customTitle"] = o.CustomTitle
+	}
+
 	if o.DebugMode != nil {
 		result["debugMode"] = o.DebugMode
+	}
+
+	if o.DefaultErrorScreenBrandLogo != nil {
+		result["defaultErrorScreenBrandLogo"] = o.DefaultErrorScreenBrandLogo
+	}
+
+	if o.DisplayNodeIDs != nil {
+		result["displayNodeIDs"] = o.DisplayNodeIDs
+	}
+
+	if o.DoNotSubstituteUnreplacedFields != nil {
+		result["doNotSubstituteUnreplacedFields"] = o.DoNotSubstituteUnreplacedFields
 	}
 
 	if o.FlowHttpTimeoutInSeconds != nil {
@@ -107,12 +149,20 @@ func (o FlowSettings) ToMap() (map[string]any, error) {
 		result["useBetaAlgorithm"] = o.UseBetaAlgorithm
 	}
 
+	if o.UseCsp != nil {
+		result["useCsp"] = o.UseCsp
+	}
+
 	if o.UseCustomCSS != nil {
 		result["useCustomCSS"] = o.UseCustomCSS
 	}
 
 	if o.UseCustomScript != nil {
 		result["useCustomScript"] = o.UseCustomScript
+	}
+
+	if o.UseIntermediateLoadingScreen != nil {
+		result["useIntermediateLoadingScreen"] = o.UseIntermediateLoadingScreen
 	}
 
 	maps.Copy(result, o.AdditionalProperties)
@@ -133,7 +183,15 @@ func (o *FlowSettings) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "csp")
 		delete(additionalProperties, "css")
 		delete(additionalProperties, "cssLinks")
+		delete(additionalProperties, "customErrorScreenBrandLogoUrl")
+		delete(additionalProperties, "customErrorShowFooter")
+		delete(additionalProperties, "customFaviconLink")
+		delete(additionalProperties, "customLogoURLSelection")
+		delete(additionalProperties, "customTitle")
 		delete(additionalProperties, "debugMode")
+		delete(additionalProperties, "defaultErrorScreenBrandLogo")
+		delete(additionalProperties, "displayNodeIDs")
+		delete(additionalProperties, "doNotSubstituteUnreplacedFields")
 		delete(additionalProperties, "flowHttpTimeoutInSeconds")
 		delete(additionalProperties, "flowTimeoutInSeconds")
 		delete(additionalProperties, "intermediateLoadingScreenCSS")
@@ -145,8 +203,10 @@ func (o *FlowSettings) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "scrubSensitiveInfo")
 		delete(additionalProperties, "sensitiveInfoFields")
 		delete(additionalProperties, "useBetaAlgorithm")
+		delete(additionalProperties, "useCsp")
 		delete(additionalProperties, "useCustomCSS")
 		delete(additionalProperties, "useCustomScript")
+		delete(additionalProperties, "useIntermediateLoadingScreen")
 		o.AdditionalProperties = additionalProperties
 	}
 
