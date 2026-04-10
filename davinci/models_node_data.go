@@ -9,6 +9,7 @@ type _NodeData NodeData
 type NodeData struct {
 	AdditionalProperties map[string]any `json:"-" davinci:"-,unmappedproperties"` // used to capture all other properties that are not explicitly defined in the model
 	CapabilityName       *string        `json:"capabilityName,omitempty" davinci:"capabilityName,config,omitempty"`
+	CapabilityClass      *string        `json:"capabilityClass,omitempty" davinci:"capabilityClass,flowmetadata,omitempty"`
 	ConnectionID         *string        `json:"connectionId,omitempty" davinci:"connectionId,config,omitempty"`
 	ConnectorID          *string        `json:"connectorId,omitempty" davinci:"connectorId,config,omitempty"`
 	ID                   *string        `json:"id,omitempty" davinci:"id,config,omitempty"`
@@ -36,6 +37,10 @@ func (o NodeData) ToMap() (map[string]any, error) {
 
 	if o.CapabilityName != nil {
 		result["capabilityName"] = o.CapabilityName
+	}
+
+	if o.CapabilityClass != nil {
+		result["capabilityClass"] = o.CapabilityClass
 	}
 
 	if o.ConnectionID != nil {
@@ -98,6 +103,7 @@ func (o *NodeData) UnmarshalJSON(bytes []byte) (err error) {
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "capabilityName")
+		delete(additionalProperties, "capabilityClass")
 		delete(additionalProperties, "connectionId")
 		delete(additionalProperties, "connectorId")
 		delete(additionalProperties, "id")
