@@ -26,7 +26,7 @@ type FlowSettings struct {
 	IntermediateLoadingScreenHTML   *FlowSettingsStringValue `json:"intermediateLoadingScreenHTML,omitempty" davinci:"intermediateLoadingScreenHTML,config,omitempty"`
 	JsLinks                         *[]interface{}           `json:"jsLinks" davinci:"jsLinks,config"`
 	LogLevel                        *int32                   `json:"logLevel,omitempty" davinci:"logLevel,environmentmetadata,omitempty"`
-	PingOneFlow                     *bool                    `json:"pingOneFlow,omitempty" davinci:"pingOneFlow,config,omitempty"`
+	PingOneFlow                     *bool                    `json:"pingOneFlow,omitempty" davinci:"pingOneFlow,-,omitempty"`
 	RequireAuthenticationToInitiate *bool                    `json:"requireAuthenticationToInitiate,omitempty" davinci:"requireAuthenticationToInitiate,config,omitempty"`
 	ScrubSensitiveInfo              *bool                    `json:"scrubSensitiveInfo,omitempty" davinci:"scrubSensitiveInfo,config,omitempty"`
 	SensitiveInfoFields             *interface{}             `json:"sensitiveInfoFields,omitempty" davinci:"sensitiveInfoFields,config,omitempty"`
