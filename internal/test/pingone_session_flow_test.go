@@ -25,7 +25,7 @@ func TestPingOneSessionFlowApp(t *testing.T) {
 		fmt.Println(err)
 		t.Fail()
 	}
-	assert.Equal(t, "AUTHENTICATION", resp.Policies[0].Trigger.TriggerType)
+	assert.Equal(t, "AUTHENTICATION", resp.Policies[0].Trigger.Type)
 }
 
 func TestNoPolicyApp(t *testing.T) {

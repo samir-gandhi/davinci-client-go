@@ -102,13 +102,36 @@ type PolicyFlow struct {
 	SuccessNodes []string `json:"successNodes,omitempty"`
 	IP           []string `json:"ip,omitempty"`
 }
+
+type PolicyTrigger struct {
+	Type          *string              `json:"type,omitempty"`
+	Configuration *TriggerConfiguration `json:"configuration,omitempty"`
+}
+
+type TriggerConfiguration struct {
+	MFA *TriggerConfigurationMFA      `json:"mfa,omitempty"`
+	PWD *TriggerConfigurationPassword `json:"pwd,omitempty"`
+}
+
+type TriggerConfigurationMFA struct {
+	Enabled    *bool    `json:"enabled,omitempty"`
+	Time       *float32 `json:"time,omitempty"`
+	TimeFormat *string  `json:"timeFormat,omitempty"`
+}
+
+type TriggerConfigurationPassword struct {
+	Enabled    *bool    `json:"enabled,omitempty"`
+	Time       *float32 `json:"time,omitempty"`
+	TimeFormat *string  `json:"timeFormat,omitempty"`
+}
+
 type Policy struct {
-	PolicyFlows []PolicyFlow `json:"flows,omitempty"`
-	Name        *string      `json:"name,omitempty"`
-	Status      *string      `json:"status,omitempty"`
-	PolicyID    *string      `json:"policyId,omitempty"`
-	CreatedDate *EpochTime   `json:"createdDate,omitempty"`
-	Trigger     *Trigger     `json:"trigger,omitempty"`
+	PolicyFlows []PolicyFlow   `json:"flows,omitempty"`
+	Name        *string        `json:"name,omitempty"`
+	Status      *string        `json:"status,omitempty"`
+	PolicyID    *string        `json:"policyId,omitempty"`
+	CreatedDate *EpochTime     `json:"createdDate,omitempty"`
+	Trigger     *PolicyTrigger `json:"trigger,omitempty"`
 }
 
 type AppUpdate struct {
