@@ -15,6 +15,9 @@ type FlowSettings struct {
 	CustomErrorShowFooter           *bool                    `json:"customErrorShowFooter,omitempty" davinci:"customErrorShowFooter,config,omitempty"`
 	CustomFaviconLink               *string                  `json:"customFaviconLink,omitempty" davinci:"customFaviconLink,config,omitempty"`
 	CustomLogoURLSelection          *interface{}             `json:"customLogoURLSelection,omitempty" davinci:"customLogoURLSelection,config,omitempty"`
+	CustomTimeoutErrorScreenCSS     *FlowSettingsStringValue `json:"customTimeoutErrorScreenCSS,omitempty" davinci:"customTimeoutErrorScreenCSS,config,omitempty"`
+	CustomTimeoutErrorScreenHTML    *FlowSettingsStringValue `json:"customTimeoutErrorScreenHTML,omitempty" davinci:"customTimeoutErrorScreenHTML,config,omitempty"`
+	CustomTimeoutErrorScreenMessage *FlowSettingsStringValue `json:"customTimeoutErrorScreenMessage,omitempty" davinci:"customTimeoutErrorScreenMessage,config,omitempty"`
 	CustomTitle                     *string                  `json:"customTitle,omitempty" davinci:"customTitle,config,omitempty"`
 	DebugMode                       *bool                    `json:"debugMode,omitempty" davinci:"debugMode,environmentmetadata,omitempty"`
 	DefaultErrorScreenBrandLogo     *bool                    `json:"defaultErrorScreenBrandLogo,omitempty" davinci:"defaultErrorScreenBrandLogo,config,omitempty"`
@@ -34,6 +37,7 @@ type FlowSettings struct {
 	UseCsp                          *bool                    `json:"useCsp,omitempty" davinci:"useCsp,config,omitempty"`
 	UseCustomCSS                    *bool                    `json:"useCustomCSS,omitempty" davinci:"useCustomCSS,config,omitempty"`
 	UseCustomScript                 *bool                    `json:"useCustomScript,omitempty" davinci:"useCustomScript,config,omitempty"`
+	UseCustomTimeoutErrorScreen     *bool                    `json:"useCustomTimeoutErrorScreen,omitempty" davinci:"useCustomTimeoutErrorScreen,config,omitempty"`
 	UseIntermediateLoadingScreen    *bool                    `json:"useIntermediateLoadingScreen,omitempty" davinci:"useIntermediateLoadingScreen,config,omitempty"`
 }
 
@@ -79,6 +83,18 @@ func (o FlowSettings) ToMap() (map[string]any, error) {
 
 	if o.CustomLogoURLSelection != nil {
 		result["customLogoURLSelection"] = o.CustomLogoURLSelection
+	}
+
+	if o.CustomTimeoutErrorScreenCSS != nil {
+		result["customTimeoutErrorScreenCSS"] = o.CustomTimeoutErrorScreenCSS
+	}
+
+	if o.CustomTimeoutErrorScreenHTML != nil {
+		result["customTimeoutErrorScreenHTML"] = o.CustomTimeoutErrorScreenHTML
+	}
+
+	if o.CustomTimeoutErrorScreenMessage != nil {
+		result["customTimeoutErrorScreenMessage"] = o.CustomTimeoutErrorScreenMessage
 	}
 
 	if o.CustomTitle != nil {
@@ -161,6 +177,10 @@ func (o FlowSettings) ToMap() (map[string]any, error) {
 		result["useCustomScript"] = o.UseCustomScript
 	}
 
+	if o.UseCustomTimeoutErrorScreen != nil {
+		result["useCustomTimeoutErrorScreen"] = o.UseCustomTimeoutErrorScreen
+	}
+
 	if o.UseIntermediateLoadingScreen != nil {
 		result["useIntermediateLoadingScreen"] = o.UseIntermediateLoadingScreen
 	}
@@ -187,6 +207,9 @@ func (o *FlowSettings) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "customErrorShowFooter")
 		delete(additionalProperties, "customFaviconLink")
 		delete(additionalProperties, "customLogoURLSelection")
+		delete(additionalProperties, "customTimeoutErrorScreenCSS")
+		delete(additionalProperties, "customTimeoutErrorScreenHTML")
+		delete(additionalProperties, "customTimeoutErrorScreenMessage")
 		delete(additionalProperties, "customTitle")
 		delete(additionalProperties, "debugMode")
 		delete(additionalProperties, "defaultErrorScreenBrandLogo")
@@ -206,6 +229,7 @@ func (o *FlowSettings) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "useCsp")
 		delete(additionalProperties, "useCustomCSS")
 		delete(additionalProperties, "useCustomScript")
+		delete(additionalProperties, "useCustomTimeoutErrorScreen")
 		delete(additionalProperties, "useIntermediateLoadingScreen")
 		o.AdditionalProperties = additionalProperties
 	}
